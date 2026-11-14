@@ -35,9 +35,9 @@ public class SecurityConfiguration {
     SecurityFilterChain demoSecurity(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(auth -> auth
                         .dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.ERROR).permitAll()
-                        .requestMatchers("/health", "/error").permitAll()
+                        .requestMatchers("/health", "/error", "/login-assets/**").permitAll()
                         .anyRequest().authenticated())
-                .formLogin(form -> form.defaultSuccessUrl("/", true).permitAll())
+                .formLogin(form -> form.loginPage("/login").defaultSuccessUrl("/", true).permitAll())
                 .logout(Customizer.withDefaults())
                 .exceptionHandling(errors -> errors.defaultAuthenticationEntryPointFor(
                         new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED),

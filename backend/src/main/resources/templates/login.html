@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ar" dir="rtl" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>تسجيل الدخول | RainOps</title>
+  <link rel="stylesheet" href="/login-assets/login.css">
+</head>
+<body>
+  <main>
+    <a class="brand" href="/login" aria-label="RainOps">
+      <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3C9 7 5 11 5 15a7 7 0 0 0 14 0c0-4-4-8-7-12Z"/><path d="M8 15a4 4 0 0 0 4 4"/></svg></span>
+      <span dir="ltr">RainOps</span>
+    </a>
+    <section aria-labelledby="login-title">
+      <p class="eyebrow">إدارة بلاغات مياه الأمطار</p>
+      <h1 id="login-title">تسجيل الدخول</h1>
+      <p class="intro">أدخل بيانات حسابك للوصول إلى مساحة العمل.</p>
+      <p class="notice error" role="alert" th:if="${param.error}">اسم المستخدم أو كلمة المرور غير صحيحة. حاول مرة أخرى.</p>
+      <p class="notice" role="status" th:if="${param.logout}">تم تسجيل الخروج بنجاح.</p>
+      <form th:action="@{/login}" method="post">
+        <label for="username">اسم المستخدم</label>
+        <input id="username" name="username" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" dir="ltr" required autofocus>
+        <label for="password">كلمة المرور</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" dir="ltr" required>
+        <button type="submit">تسجيل الدخول <span aria-hidden="true">←</span></button>
+      </form>
+      <p class="hint">نسخة تجريبية للمراجعة · استخدم بيانات الدخول المرفقة مع رابط العرض.</p>
+    </section>
+    <footer>RainOps <span aria-hidden="true">/</span> متابعة البلاغات من التسجيل إلى المعالجة</footer>
+  </main>
+</body>
+</html>

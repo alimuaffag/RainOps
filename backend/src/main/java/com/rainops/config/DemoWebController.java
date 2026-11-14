@@ -15,6 +15,16 @@ public class DemoWebController {
         return "forward:/index.html";
     }
 
+    @GetMapping("/login")
+    String login() {
+        return "login";
+    }
+
+    @GetMapping("/logout")
+    String logout() {
+        return "logout";
+    }
+
     @GetMapping("/health")
     @ResponseBody
     Map<String, String> health() {
