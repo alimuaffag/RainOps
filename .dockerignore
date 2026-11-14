@@ -1,0 +1,16 @@
+**
+!Dockerfile
+!backend/
+!backend/**
+!frontend/
+!frontend/**
+backend/target/
+backend/.idea/
+frontend/node_modules/
+frontend/dist/
+frontend/test-results/
+frontend/playwright-report/
+frontend/.env*
+**/.git/
+**/*.log
+**/.local/

@@ -1,0 +1,34 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: rainops_demo
+      POSTGRES_USER: rainops
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+    volumes:
+      - demo-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rainops -d rainops_demo"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+  app:
+    build: .
+    ports:
+      - "127.0.0.1:8082:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: demo
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: rainops_demo
+      DB_USERNAME: rainops
+      DB_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+      DEMO_USERNAME: reviewer
+      DEMO_PASSWORD: ${DEMO_PASSWORD:?Set DEMO_PASSWORD in .env}
+      DEMO_SEED: "true"
+      COOKIE_SECURE: "false"
+    depends_on:
+      db:
+        condition: service_healthy
+volumes:
+  demo-data:

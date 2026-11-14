@@ -1,0 +1,47 @@
+services:
+  - type: web
+    name: rainops-demo
+    runtime: docker
+    plan: free
+    region: frankfurt
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: demo
+      - key: DB_HOST
+        fromDatabase:
+          name: rainops-demo-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: rainops-demo-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: rainops-demo-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: rainops-demo-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: rainops-demo-db
+          property: password
+      - key: DEMO_USERNAME
+        value: reviewer
+      - key: DEMO_PASSWORD
+        generateValue: true
+      - key: DEMO_SEED
+        value: "true"
+      - key: COOKIE_SECURE
+        value: "true"
+databases:
+  - name: rainops-demo-db
+    plan: free
+    region: frankfurt
+    databaseName: rainops_demo
+    user: rainops
+    postgresMajorVersion: "17"
+    ipAllowList: []
