@@ -49,8 +49,8 @@ public class SecurityConfiguration {
     @Profile("demo")
     UserDetailsService demoUsers(@Value("${rainops.demo.username}") String username,
                                 @Value("${rainops.demo.password}") String password) {
-        if (password.isBlank() || password.length() < 16) {
-            throw new IllegalArgumentException("DEMO_PASSWORD must contain at least 16 characters.");
+        if (password.isBlank() || password.length() < 8) {
+            throw new IllegalArgumentException("DEMO_PASSWORD must contain at least 8 characters.");
         }
         return new InMemoryUserDetailsManager(User.withUsername(username)
                 .password("{bcrypt}" + new BCryptPasswordEncoder().encode(password))

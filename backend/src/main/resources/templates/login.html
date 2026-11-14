@@ -21,12 +21,18 @@
         <label for="username">اسم المستخدم</label>
         <input id="username" name="username" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" dir="ltr" required autofocus>
         <label for="password">كلمة المرور</label>
-        <input id="password" name="password" type="password" autocomplete="current-password" dir="ltr" required>
+        <div class="password-field">
+          <input id="password" name="password" type="password" autocomplete="current-password" dir="ltr" required>
+          <button class="password-toggle" type="button" aria-label="إظهار كلمة المرور" aria-controls="password" aria-pressed="false" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/><path class="eye-slash" d="m3 3 18 18"/></svg>
+          </button>
+        </div>
         <button type="submit">تسجيل الدخول <span aria-hidden="true">←</span></button>
       </form>
       <p class="hint">نسخة تجريبية للمراجعة · استخدم بيانات الدخول المرفقة مع رابط العرض.</p>
     </section>
     <footer>RainOps <span aria-hidden="true">/</span> متابعة البلاغات من التسجيل إلى المعالجة</footer>
   </main>
+  <script src="/login-assets/login.js" defer></script>
 </body>
 </html>

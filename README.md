@@ -56,6 +56,6 @@ The root Dockerfile builds React and packages it inside Spring Boot for same-ori
 
 The demo profile enables session-based login, CSRF protection, secure cookies, SPA routes, and optional sample incidents. Local development remains unauthenticated. This is a shared reviewer account, not a full user/role-management system.
 
-For local Docker verification, copy .env.example to .env, set distinct random passwords (reviewer password at least 16 characters), and run docker compose up --build. Open http://127.0.0.1:8082. Local demo cookies are not Secure because this URL uses HTTP; Render enables Secure cookies over HTTPS.
+For local Docker verification, copy .env.example to .env, set distinct random passwords (reviewer password at least 8 characters), and run docker compose up --build. Open http://127.0.0.1:8082. Local demo cookies are not Secure because this URL uses HTTP; Render enables Secure cookies over HTTPS.
 
 Free Render databases expire after 30 days and web services may sleep after inactivity. Confirm current platform limits before sharing a review link. Keep credentials out of Git. No production-data migration is included.
